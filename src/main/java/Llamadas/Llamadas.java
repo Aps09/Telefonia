@@ -14,7 +14,7 @@ public class Llamadas {
     }
 
     public Fecha getFecha(){
-
+    return;
     }
 
     public Llamadas getCall (Clientes cliente){

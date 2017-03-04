@@ -19,7 +19,7 @@ public class Facturas {
 
     }
 
-    public fecha getFecha(){
+    public Fecha getFecha(){
 
     }
 
