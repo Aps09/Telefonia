@@ -1,12 +1,10 @@
 package Clientes;
 
 import Facturas.Facturas;
-import Llamadas.Fecha;
+import Fecha.Fecha;
 import Llamadas.Llamadas;
+import Tarifa.Tarifa;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -21,38 +19,18 @@ public class Clientes {
 
     private int size;
 
-    private Node clients[];
-    private Facturas facturas;
+    public String nif;
+    private String nombre;
+    private Direccion direccion;
+    private String email;
+    private Fecha fechaAlta;
+    private Tarifa tarifa;
+
+
+    private Nodos clients[];
+    private Nodos first;
+    public Facturas facturas;
     private Llamadas llamadas;
-
-
-    // **************************** CLASE NODO ****************************
-
-    public class Node{
-
-        private Node next;
-        private Node prev;
-        private String nif;
-        private String nombre;
-        private Direccion direccion;
-        private String email;
-        private Fecha fechaAlta;
-        private Tarifa tarifa;
-
-        public Node(){
-            nif = null;
-            nombre = null;
-            direccion = new Direccion();
-            next = null;
-            prev = null;
-        }
-
-        public Node(Node sig, Node ant) {
-            next = sig;
-            prev = ant;
-        }
-
-    }
 
 
     // **************************** CONSTRUCTORES ****************************
@@ -66,19 +44,19 @@ public class Clientes {
 
     // **************************** PEDIR DATOS ****************************
 
-    public Node askClient(){
-            Node nuevo = new Node();
+    public Nodos askClient(){
+            Nodos nuevo = new Nodos();
             System.out.print("¿Cuál es el NIF del cliente?: ");
-            nuevo.nif= scan.next();
+            nuevo.cliente.nif = scan.next();
 
 
             System.out.print("¿Cuál es el nombre del cliente?: ");
-            nuevo.nombre = scan.next();
+            nuevo.cliente.nombre = scan.next();
 
             System.out.print("Indique su e-mail: ");
-            nuevo.email = scan.next();
+            nuevo.cliente.email = scan.next();
 
-            nuevo.direccion.askDirection();
+            nuevo.cliente.direccion.askDirection();
 
             // Falta recoger el dia actual y preguntar la tarifa
             return nuevo;
@@ -87,19 +65,19 @@ public class Clientes {
 
     // **************************** METODOS ****************************
 
-    public void addClient(Clientes cliente){
-        Node nodo = new Node();
-        nodo.cliente = cliente;
+    public void addClient(Nodos cliente) {
 
-        if (size > 0){
-            for(Node aux = clients[0]; aux != null ; aux=aux.next ){
-                if(aux.next==null){
-                    aux.next = nodo;
-                    nodo.prev = aux;
+        if (size > 0) {
+            for (Nodos aux = clients[0]; aux != null; aux = aux.next) {
+                if (aux.next == null) {
+                    aux.next = cliente;
+                    cliente.prev = aux;
                 }
             }
-        } else
-            clients[0]=nodo;
+        } else{
+            clients[0] = cliente;
+            first = cliente;
+        }
         size++;
     }
 
@@ -108,7 +86,7 @@ public class Clientes {
     }
 
     public void delClient(String nif){
-        for(Node aux = clients[0]; aux!= null; aux = aux.next){
+        for(Nodos aux = clients[0]; aux!= null; aux = aux.next){
             if(aux.cliente.nif == nif){
                 aux.prev.next = aux.next;
                 aux.next.prev = aux.prev;
@@ -118,7 +96,7 @@ public class Clientes {
     }
 
     public void cambiarTarifa(int nueva, String nif){
-        for(Node aux = clients[0]; aux!= null; aux = aux.next){
+        for(Nodos aux = clients[0]; aux!= null; aux = aux.next){
             if(aux.cliente.nif == nif) {
                 aux.cliente.tarifa.setCantidad(nueva);
             }
@@ -126,8 +104,8 @@ public class Clientes {
     }
 
     public void datosCliente(String dni){
-        for(Node aux = clients[0]; aux!= null; aux = aux.next){
-            if(aux.cliente.nif == nif) {
+        for(Nodos aux = clients[0]; aux!= null; aux = aux.next){
+            if(aux.cliente.nif == dni) {
                 System.out.println("Nombre: "+aux.cliente.nombre);
                 System.out.println("NIF: "+aux.cliente.nif);
                 aux.cliente.direccion.getInfo();
@@ -138,17 +116,23 @@ public class Clientes {
         }
     }
 
-    public Clientes getClients(){
-        for(Node aux = clients[0]; aux!= null; aux = aux.next)
+    public void getClients(){
+        for(Nodos aux = clients[0]; aux!= null; aux = aux.next)
             System.out.println(aux.cliente.nombre);
     }
 
+    public void getFacturas(String dni){
+        for(Nodos aux = clients[0]; aux!= null; aux = aux.next) {
+            if (aux.cliente.nif == dni)
+                aux.cliente.facturas.printFacturas();
+        }
+    }
 
     // **************************** COMPARADOR ****************************
 
     public boolean equals (Clientes cliente){
-        for(Node aux = clients[0]; aux!= null; aux = aux.next) {
-            if (aux.cliente.nif == nif) {
+        for(Nodos aux = clients[0]; aux!= null; aux = aux.next) {
+            if (aux.cliente.nif == cliente.nif) {
                 return true;
             }
         }
