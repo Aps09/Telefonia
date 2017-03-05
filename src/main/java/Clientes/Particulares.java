@@ -1,6 +1,6 @@
 package Clientes;
 
-import Llamadas.Fecha;
+import Llamadas.FechaLl;
 
 /**
  * Created by al341853 on 28/02/17.
@@ -23,7 +23,7 @@ public class Particulares extends Clientes {
     }
 
     @Override
-    public Fecha getFecha(){
+    public FechaLl getFecha(){
 
     }
 

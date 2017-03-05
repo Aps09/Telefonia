@@ -1,7 +1,6 @@
 package Clientes;
 
 import Facturas.Facturas;
-import Llamadas.Fecha;
 import Llamadas.Llamadas;
 
 /**
@@ -13,7 +12,7 @@ public class Clientes {
     private String nombre;
     private Direccion direccion;
     private String email;
-    private Fecha fechaAlta;
+    private Llamadas.FechaLl fechaAlta;
     private Tarifa tarifa;
 
     private Clientes[] listaClientes;
@@ -31,7 +30,7 @@ public class Clientes {
 
     }
 
-    public Fecha getFecha(){
+    public Llamadas.FechaLl getFecha(){
 
     }
 

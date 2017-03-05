@@ -13,7 +13,7 @@ public class Llamadas {
 
     }
 
-    public Fecha getFecha(){
+    public Llamadas.FechaLl getFecha(){
     return;
     }
 

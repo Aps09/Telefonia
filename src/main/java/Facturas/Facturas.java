@@ -19,7 +19,7 @@ public class Facturas {
 
     }
 
-    public Fecha getFecha(){
+    public Facturas.FechaFac getFecha(){
 
     }
 
