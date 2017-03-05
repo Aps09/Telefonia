@@ -13,8 +13,8 @@ public class Llamadas {
 
     }
 
-    public Llamadas.FechaLl getFecha(){
-    return;
+    public Fecha getFecha(){
+
     }
 
     public Llamadas getCall (Clientes cliente){
