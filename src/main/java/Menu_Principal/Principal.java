@@ -5,13 +5,12 @@ import java.util.Scanner;
 /**
  * Created by al341853 on 28/02/17.
  */
-public class Principal implements Menus {
+public class Principal extends Acciones implements Menus {
 
     private int opcionPrincipal, opcion;
     private Scanner scan = new Scanner(System.in);
 
-    public void main() {
-        // Aquí es donde lanzaremos
+    public void ejecucion() {
 
         menuPrincipal();
 
@@ -20,20 +19,20 @@ public class Principal implements Menus {
         if (opcionPrincipal != 0) {
             do {
                 opcion = getMenuPrincipal(opcionPrincipal);
-                if (opcion == 0){
+                if (opcion == 0) {
                     menuPrincipal();
-                    opcionPrincipal=scan.nextInt();
-                 }
-                 accionSubmenu(opcionPrincipal,opcion);
+                    opcionPrincipal = scan.nextInt();
+                }else {
+                    accionSubmenu(opcionPrincipal, opcion);
+                }
             } while (opcionPrincipal != 0);
         }
         scan.close();
     }
 
 
-    public int getMenuPrincipal(int opcion) {
+    private int getMenuPrincipal(int opcion) {
         // Aquí accederemos a cada menú del principal
-
         switch (opcion) {
             case 1:
                 clientOptions();
@@ -52,9 +51,16 @@ public class Principal implements Menus {
         return scan.nextInt();
     }
 
-    public int accionSubmenu(int opcionPrincipal, int opcion){
+    public void accionSubmenu(int opcionPrincipal, int opcion){
     // Una vez sepamos la opcion del submenú ejecutaremos la opcion
-
+        switch (opcionPrincipal){
+            case 1:
+                accionesClientes(opcion);
+            case 2:
+                accionesLlamadas(opcion);
+            case 3:
+                accionesFacturas(opcion);
+        }
     }
 
 
@@ -66,7 +72,6 @@ public class Principal implements Menus {
         System.out.println("2. Menú llamadas.");
         System.out.println("3. Menú facturas.");
         System.out.println("0. Salir.");
-
     }
 
     @Override
@@ -79,7 +84,6 @@ public class Principal implements Menus {
         System.out.println("4. Recuperar los datos de un cliente.");
         System.out.println("5. Recuperar el listado de todos los clientes.");
         System.out.println("0. Atrás.");
-
     }
 
     @Override
@@ -89,7 +93,6 @@ public class Principal implements Menus {
         System.out.println("1. Dar de alta una llamada.");
         System.out.println("2. Listar las llamadas de un cliente.");
         System.out.println("0. Atrás.");
-
     }
 
     @Override
@@ -100,6 +103,5 @@ public class Principal implements Menus {
         System.out.println("2. Recuperar los datos de una factura.");
         System.out.println("3. Recuperar las facturas de un cliente.");
         System.out.println("0. Atrás.");
-
     }
 }
