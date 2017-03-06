@@ -3,10 +3,12 @@ package Facturas;
 import Clientes.Clientes;
 import Fecha.Fecha;
 
+import java.time.LocalDateTime;
+
 /**
  * Created by al341853 on 28/02/17.
  */
-public class Facturas {
+public class Facturas implements Fecha{
 
     //FALTAN VARIABLES, LA CLASE FECHA Y DESARROLLAR LOS METODOS
 
@@ -14,7 +16,7 @@ public class Facturas {
     private int tarifa;
     private int importe;
     private int size;
-    private Fecha fechaEmision;
+    private LocalDateTime fechaEmision;
     private Clientes cliente;
     private Facturas[] listaFacturas;
 
@@ -24,15 +26,15 @@ public class Facturas {
     }
 
     public void addFactura(){
-        // recorrer vector y añadir ultimo
+
     }
 
     public int calcularFactura (){
 
     }
 
-    public Fecha getFecha(){
-
+    public LocalDateTime getFecha(){
+        return fechaEmision;
     }
 
     public void getFactura (int codfac){
@@ -52,12 +54,10 @@ public class Facturas {
     // **************************** ENSEÑAR INFORMATION ****************************
 
     public void getInfo(){
-        for(int index = 0; index < )
         System.out.println("Código de factura: "+this.codfac);
         System.out.println("Tarifa contratada: "+this.tarifa);
         System.out.println("Importe total: "+this.importe);
-        //Enseñar fecha
-
+        System.out.println("Fecha de emisión de factura: "+this.fechaEmision);
     }
 
 }

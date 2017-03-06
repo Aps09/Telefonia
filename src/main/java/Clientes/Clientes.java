@@ -5,13 +5,14 @@ import Fecha.Fecha;
 import Llamadas.Llamadas;
 import Tarifa.Tarifa;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 
 /**
  * Created by al341853 on 28/02/17.
  */
-public class Clientes {
+public class Clientes implements Fecha{
 
     // **************************** ATRIBUTOS ****************************
 
@@ -23,12 +24,11 @@ public class Clientes {
     private String nombre;
     private Direccion direccion;
     private String email;
-    private Fecha fechaAlta;
+    private LocalDateTime fechaAlta;
     private Tarifa tarifa;
 
 
     private Nodos clients[];
-    private Nodos first;
     public Facturas facturas;
     private Llamadas llamadas;
 
@@ -59,6 +59,7 @@ public class Clientes {
             nuevo.cliente.direccion.askDirection();
 
             // Falta recoger el dia actual y preguntar la tarifa
+            this.fechaAlta=LocalDateTime.now();
             return nuevo;
     }
 
@@ -74,15 +75,14 @@ public class Clientes {
                     cliente.prev = aux;
                 }
             }
-        } else{
+        } else
             clients[0] = cliente;
-            first = cliente;
-        }
+
         size++;
     }
 
-    public Fecha getFecha(){
-
+    public LocalDateTime getFecha(){
+        return fechaAlta;
     }
 
     public void delClient(String nif){
@@ -138,5 +138,4 @@ public class Clientes {
         }
         return false;
     }
-
 }

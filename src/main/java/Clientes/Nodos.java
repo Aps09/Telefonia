@@ -7,6 +7,7 @@ public class Nodos {
     public Clientes cliente;
     public Nodos next;
     public Nodos prev;
+    public Nodos first;
 
 
     public Nodos(){
@@ -15,5 +16,9 @@ public class Nodos {
 
     public Nodos(Clientes client){
         cliente = client;
+    }
+
+    public Nodos getFirst(){
+        return first;
     }
 }
