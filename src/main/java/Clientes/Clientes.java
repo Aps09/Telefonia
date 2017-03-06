@@ -30,7 +30,7 @@ public class Clientes implements Fecha{
 
     private Nodos clients[];
     public Facturas facturas;
-    private Llamadas llamadas;
+    public Llamadas llamadas;
 
 
     // **************************** CONSTRUCTORES ****************************
@@ -114,6 +114,14 @@ public class Clientes implements Fecha{
                 System.out.println("Tarifa: "+aux.cliente.tarifa+"€/min");
             }
         }
+    }
+
+    public Nodos getClient(String dni){
+        for(Nodos aux = clients[0]; aux!= null; aux = aux.next) {
+            if (aux.cliente.nif == nif)
+                return aux;
+        }
+        return null;
     }
 
     public void getClients(){

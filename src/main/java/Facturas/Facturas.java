@@ -2,6 +2,7 @@ package Facturas;
 
 import Clientes.Clientes;
 import Fecha.Fecha;
+import Tarifa.Tarifa;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +14,7 @@ public class Facturas implements Fecha{
     //FALTAN VARIABLES, LA CLASE FECHA Y DESARROLLAR LOS METODOS
 
     private int codfac;
-    private int tarifa;
+    private Tarifa tarifa;
     private int importe;
     private int size;
     private LocalDateTime fechaEmision;
