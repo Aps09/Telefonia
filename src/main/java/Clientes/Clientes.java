@@ -5,6 +5,7 @@ import Fecha.Fecha;
 import Llamadas.Llamadas;
 import Tarifa.Tarifa;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ import java.util.Scanner;
 /**
  * Created by al341853 on 28/02/17.
  */
-public class Clientes implements Fecha{
+public class Clientes implements Fecha, Serializable{
 
     // **************************** ATRIBUTOS ****************************
 
@@ -81,7 +82,9 @@ public class Clientes implements Fecha{
         size++;
     }
 
+    public void metodoSerializable(){
 
+    }
 
 
     public LocalDateTime getFecha(){

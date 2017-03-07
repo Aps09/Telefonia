@@ -3,6 +3,8 @@ package Menu_Principal;
 import Clientes.*;
 import Fecha.Fecha;
 
+import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Scanner;
 
 /**
@@ -93,5 +95,14 @@ public class Acciones {
         }
     }
 
-    public <T> extends Fecha
+    public <T extends Fecha> Collection <T> genericoFecha(Collection<T> coleccion, LocalDateTime inicio, LocalDateTime fin){
+
+        Collection <T> resultado = null;
+
+        for(T objeto : coleccion){
+            if (objeto.getFecha().compareTo(inicio)>=0 && objeto.getFecha().compareTo(fin)<=0)
+                resultado.add(objeto);
+        }
+        return resultado;
+    }
 }
