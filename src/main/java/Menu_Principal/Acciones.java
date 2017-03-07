@@ -1,6 +1,7 @@
 package Menu_Principal;
 
 import Clientes.*;
+import Fecha.Fecha;
 
 import java.util.Scanner;
 
@@ -91,4 +92,6 @@ public class Acciones {
                 base.getFacturas(dni);
         }
     }
+
+    public <T> extends Fecha
 }

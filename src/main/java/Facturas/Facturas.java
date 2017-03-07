@@ -34,9 +34,15 @@ public class Facturas implements Fecha{
 
     }
 
-    public LocalDateTime getFecha(){
-        return fechaEmision;
+
+    public Facturas[] generico(Facturas[] vector,Fecha inicio, Fecha fin){
+
     }
+
+
+    /*public LocalDateTime getFecha(){
+        return fechaEmision;
+    }*/
 
     public void getFactura (int codfac){
         for(int index = 0; index < size; index++){
